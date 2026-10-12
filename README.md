@@ -46,3 +46,22 @@ Brauzerda `http://localhost:3000` ni oching.
 | Shisha       | rgba ko'k    | oq 48-66%   |
 
 Shriftlar: **Manrope** (asosiy) + **Playfair Display** (aksent).
+
+---
+
+## 🏛 AZURA Architects — Arxitektura portfolio (SOFT UI)
+
+`architecture/` papkasida — **SOFT UI (neumorfizm)** uslubidagi arxitektura
+portfolio sayti. Hotel saytidan mustaqil, o‘z `index.html`, `css/`, `js/` va
+`images/` to‘plamiga ega.
+
+- **Soft UI / neumorphism** — yumshoq ikki tomonlama soyalar, bosilgan (inset) sirtlar
+- **Tun / Kun rejimi** — to‘q ko‘k (tun) va och ko‘k (kun), `localStorage` + tizim sozlamasi
+- **Asosiy ranglar** — och ko‘k `#e8f0fa` / to‘q ko‘k `#101c2e`, aksent `#2f80d9` / `#5fb2ff`
+- AI generatsiya qilingan 10 ta arxitektura rasmi (minoralar, muzey, pavilon, interyer, studiya)
+- Loyihalar filtri (Madaniy / Turar-joy / Ofis / Interer), galereya lightbox,
+  animatsion hisoblagichlar, aloqa formasi + toast
+
+```bash
+cd architecture && python3 -m http.server 3000
+```
