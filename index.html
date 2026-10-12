@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AZURA Hotel & Spa — Toshkentdagi premium mehmonxona. Liquid glass dizayn, tun va kun rejimi." />
+  <title>AZURA Hotel & Spa — Premium mehmonxona</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234EA8FF'/%3E%3Cstop offset='1' stop-color='%237DD3FC'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='url(%23g)'/%3E%3Cpath d='M18 44 L32 18 L46 44 Z' fill='none' stroke='white' stroke-width='5' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='38' r='3.5' fill='white'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Theme anti-FOUC: saqlangan yoki tizim sozlamasini CSS yuklanishigacha qo'llaydi
+    (function () {
+      try {
+        var t = localStorage.getItem("azura-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <!-- Background: liquid glass ambient layer -->
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav-wrap">
+    <nav class="nav glass">
+      <a href="#home" class="logo" aria-label="AZURA bosh sahifa">
+        <span class="logo-mark">
+          <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)" />
+                <stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+            </defs>
+            <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#lg)" />
+            <path d="M18 44 L32 18 L46 44 Z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" />
+            <circle cx="32" cy="38" r="3.5" fill="#fff" />
+          </svg>
+        </span>
+        <span class="logo-text">AZURA<em>Hotel &amp; Spa</em></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Biz haqimizda</a></li>
+        <li><a href="#rooms">Xonalar</a></li>
+        <li><a href="#services">Xizmatlar</a></li>
+        <li><a href="#gallery">Galereya</a></li>
+        <li><a href="#reviews">Sharhlar</a></li>
+        <li><a href="#contact">Aloqa</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Kun / Tun toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Kun va tun rejimini almashtirish" title="Kun / Tun">
+          <span class="toggle-track">
+            <span class="toggle-thumb">
+              <svg class="icon-sun" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19" />
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11z" />
+              </svg>
+            </span>
+          </span>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Band qilish</a>
+
+        <button class="burger" id="burger" aria-label="Menyu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu glass" id="mobileMenu">
+    <ul>
+      <li><a href="#about">Biz haqimizda</a></li>
+      <li><a href="#rooms">Xonalar</a></li>
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#gallery">Galereya</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+      <li><a href="#contact">Aloqa</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Band qilish</a>
+  </div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <img src="images/hero-night.jpg" alt="AZURA mehmonxonasi tungi ko'rinishi" class="hero-img" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content container">
+        <div class="hero-badge glass reveal">
+          <span class="pulse-dot"></span> Toshkent · 5 yulduzli premium mehmonxona
+        </div>
+
+        <h1 class="hero-title reveal">
+          Osmon va suv<br />
+          <em>uyushgan</em> joy
+        </h1>
+
+        <p class="hero-sub reveal">
+          AZURA Hotel &amp; Spa — zamonaviy me'morchilik, lazurniy basseynlar va
+          unutilmas dam olish maskani. Har bir lahzani <strong>liquid glass</strong>
+          soflikda his qiling.
+        </p>
+
+        <div class="hero-cta reveal">
+          <a href="#rooms" class="btn btn-primary btn-lg">
+            Xonalarni ko'rish
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#gallery" class="btn btn-glass btn-lg">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg>
+            Virtual tur
+          </a>
+        </div>
+
+        <div class="hero-stats reveal">
+          <div class="stat glass">
+            <span class="stat-num" data-count="120">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Luxury xonalar</span>
+          </div>
+          <div class="stat glass">
+            <span class="stat-num" data-count="15">0</span>
+            <span class="stat-label">Yillik tajriba</span>
+          </div>
+          <div class="stat glass">
+            <span class="stat-num" data-count="4.9">0</span>
+            <span class="stat-label">Mehmonlar reytingi</span>
+          </div>
+          <div class="stat glass">
+            <span class="stat-num" data-count="24">0</span><span class="stat-plus">/7</span>
+            <span class="stat-label">Concierge xizmati</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Pastga aylantirish">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee glass-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Infinity basseyn</span><i>✦</i>
+        <span>SPA &amp; Wellness</span><i>✦</i>
+        <span>Panorama restoran</span><i>✦</i>
+        <span>Rooftop bar</span><i>✦</i>
+        <span>24/7 room service</span><i>✦</i>
+        <span>Biznes markaz</span><i>✦</i>
+        <span>Transfer xizmati</span><i>✦</i>
+        <span>Infinity basseyn</span><i>✦</i>
+        <span>SPA &amp; Wellness</span><i>✦</i>
+        <span>Panorama restoran</span><i>✦</i>
+        <span>Rooftop bar</span><i>✦</i>
+        <span>24/7 room service</span><i>✦</i>
+        <span>Biznes markaz</span><i>✦</i>
+        <span>Transfer xizmati</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="about-img-main glass-frame">
+            <img src="images/lobby.jpg" alt="AZURA mehmonxonasi lobbi" loading="lazy" />
+          </div>
+          <div class="about-img-sub glass-frame">
+            <img src="images/spa.jpg" alt="AZURA SPA markazi" loading="lazy" />
+          </div>
+          <div class="about-float-card glass">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.6 6.6L21 11l-6.4 2.4L12 20l-2.6-6.6L3 11l6.4-2.4z"/></svg>
+            <div>
+              <strong>5 yulduz</strong>
+              <span>Premium standart</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <span class="eyebrow reveal">Biz haqimizda</span>
+          <h2 class="section-title reveal">
+            Mehmondo'stlik san'ati,<br />
+            <em>zamonaviy</em> talqinda
+          </h2>
+          <p class="lead reveal">
+            AZURA — shahar ritmi va tabiat tinchligi uyg'unlashgan maskan.
+            Oq shimoliy osmon ranglaridagi interyerlar, shisha fasadlar va
+            suv yuzasi aks etgan basseynlar sizni kutmoqda.
+          </p>
+          <p class="reveal">
+            Har bir xona professional dizaynerlar tomonidan ishlangan bo'lib,
+            premium jihozlar, aqlli uy tizimi va panoramali derazalar bilan
+            jihozlangan. AZURA'da dam olish — bu shunchaki ta'til emas,
+            balki yangi his-tuyg'ular olami.
+          </p>
+
+          <ul class="about-features reveal">
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              Shahar markazida qulay joylashuv
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              Ekologik toza materiallar
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              Milliy va yevropa oshxonasi
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              Aeroportdan transfer
+            </li>
+          </ul>
+
+          <div class="about-cta reveal">
+            <a href="#services" class="btn btn-glass">Xizmatlar bilan tanishing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ROOMS ============ -->
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Xonalar &amp; Suite'lar</span>
+          <h2 class="section-title reveal">Har bir detalda <em>nafislik</em></h2>
+          <p class="section-sub reveal">Uch xil darajadagi xonalar — sizga mos tanlov doim bor.</p>
+        </div>
+
+        <div class="rooms-grid">
+          <!-- Room 1 -->
+          <article class="room-card glass reveal">
+            <div class="room-media">
+              <img src="images/room-deluxe.jpg" alt="Deluxe xona" loading="lazy" />
+              <span class="room-tag">Mashhur</span>
+            </div>
+            <div class="room-body">
+              <div class="room-top">
+                <h3>Deluxe King</h3>
+                <div class="room-price"><strong>$120</strong><span>/ kecha</span></div>
+              </div>
+              <p>Yumshoq teksturalar, panoramali deraza va shahar manzarasi bilan jihozlangan deluxe xona.</p>
+              <ul class="room-feats">
+                <li>32 m²</li>
+                <li>King size karavot</li>
+                <li>Shahar manzarasi</li>
+                <li>Smart TV</li>
+              </ul>
+              <a href="#contact" class="btn btn-glass btn-block">Band qilish</a>
+            </div>
+          </article>
+
+          <!-- Room 2 -->
+          <article class="room-card glass reveal featured">
+            <div class="room-media">
+              <img src="images/room-suite.jpg" alt="Premium suite" loading="lazy" />
+              <span class="room-tag accent">Premium</span>
+            </div>
+            <div class="room-body">
+              <div class="room-top">
+                <h3>Azure Suite</h3>
+                <div class="room-price"><strong>$240</strong><span>/ kecha</span></div>
+              </div>
+              <p>Alohida mehmon xonasi, dizayner interyer va lazuriy ranglar uyg'unligidagi premium suite.</p>
+              <ul class="room-feats">
+                <li>58 m²</li>
+                <li>Alohida zal</li>
+                <li>Vanna &amp; dush</li>
+                <li>Mini bar</li>
+              </ul>
+              <a href="#contact" class="btn btn-primary btn-block">Band qilish</a>
+            </div>
+          </article>
+
+          <!-- Room 3 -->
+          <article class="room-card glass reveal">
+            <div class="room-media">
+              <img src="images/room-presidential.jpg" alt="Presidential suite" loading="lazy" />
+              <span class="room-tag">VIP</span>
+            </div>
+            <div class="room-body">
+              <div class="room-top">
+                <h3>Presidential</h3>
+                <div class="room-price"><strong>$420</strong><span>/ kecha</span></div>
+              </div>
+              <p>Eng yuqori darajadagi hashamat: keng maydon, shaxsiy butler va 360° panorama.</p>
+              <ul class="room-feats">
+                <li>96 m²</li>
+                <li>Shaxsiy butler</li>
+                <li>Jacuzzi</li>
+                <li>Rooftop kirish</li>
+              </ul>
+              <a href="#contact" class="btn btn-glass btn-block">Band qilish</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Xizmatlar</span>
+          <h2 class="section-title reveal">Siz uchun <em>har bir</em> qulaylik</h2>
+          <p class="section-sub reveal">Mehmonlarimiz dam olishini yanada unutilmas qiladigan xizmatlar to'plami.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 16c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0"/><path d="M2 21c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0"/><path d="M6 11V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/></svg>
+            </div>
+            <h3>Infinity basseyn</h3>
+            <p>Osmon bilan tutashgan ochiq basseyn, quyosh botishi manzarasi va pool-bar.</p>
+          </div>
+
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3c2 3.5 2 6-1 9-3.5 3.5-3 7.5 1 9"/><path d="M12 3c-2 3.5-2 6 1 9 3 3 3 7-1 9"/><circle cx="12" cy="12" r="9.2"/></svg>
+            </div>
+            <h3>SPA &amp; Wellness</h3>
+            <p>Hammom, sauna, massaj va meditatsiya — tanangiz va ruhingiz uchun yangilanish.</p>
+          </div>
+
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19h16"/><path d="M6 19V9l6-5 6 5v10"/><path d="M10 19v-5h4v5"/></svg>
+            </div>
+            <h3>Panorama restoran</h3>
+            <p>Bosh oshpazning milliy va yevropa taomlari, panoramali shisha shift ostida.</p>
+          </div>
+
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6"/><path d="M3 11h18"/></svg>
+            </div>
+            <h3>Biznes markaz</h3>
+            <p>Zamonaviy konferens-zal, tezkor internet va ofis jihozlari bilan ta'minlangan ish joyi.</p>
+          </div>
+
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14l-1.2-5.2A3 3 0 0 0 15 9H9a3 3 0 0 0-2.8 2.8z"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M9 9l1-3h4l1 3"/></svg>
+            </div>
+            <h3>Transfer xizmati</h3>
+            <p>Aeroport va vokzaldan premium avtomobillar bilan qulay transfer — 24 soat davomida.</p>
+          </div>
+
+          <div class="service-tile glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/><path d="M19 3l.7 1.8L21.5 5.5l-1.8.7L19 8l-.7-1.8-1.8-.7 1.8-.7z"/></svg>
+            </div>
+            <h3>24/7 Concierge</h3>
+            <p>Shaxsiy konsyerj: sayohat, restoran bandligi va har qanday so'rovingiz uchun.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Galereya</span>
+          <h2 class="section-title reveal">AZURA <em>olami</em> bilan tanishing</h2>
+          <p class="section-sub reveal">Mehmonxonamizning eng go'shi lahatalari bir joyda.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item glass-frame reveal" data-caption="Infinity basseyn — osmon bilan tutashgan suzish havzasi">
+            <img src="images/pool.jpg" alt="Infinity basseyn" loading="lazy" />
+            <figcaption class="glass">Infinity basseyn</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="Panorama restoran — sham yorug'lidagi kechki ovqat">
+            <img src="images/restaurant.jpg" alt="Panorama restoran" loading="lazy" />
+            <figcaption class="glass">Panorama restoran</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="SPA markazi — suv va yorug'lik uyg'unligi">
+            <img src="images/spa.jpg" alt="SPA markaz" loading="lazy" />
+            <figcaption class="glass">SPA &amp; Wellness</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="Rooftop bar — shahar manzarasi ostida kokteyllar">
+            <img src="images/rooftop.jpg" alt="Rooftop bar" loading="lazy" />
+            <figcaption class="glass">Rooftop bar</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="Mehmonlar lounge — yumshoq yorug'lik va nafislik">
+            <img src="images/lounge.jpg" alt="Lounge zona" loading="lazy" />
+            <figcaption class="glass">Lounge zona</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="AZURA minorasi — shisha fasad va osmon aksi">
+            <img src="images/tower.jpg" alt="AZURA minorasi" loading="lazy" />
+            <figcaption class="glass">AZURA minorasi</figcaption>
+          </figure>
+          <figure class="gallery-item glass-frame reveal" data-caption="Tungi panorama — mehmonxona derazalarining iliq yorug'ligi">
+            <img src="images/night-windows.jpg" alt="Tungi panorama" loading="lazy" />
+            <figcaption class="glass">Tungi panorama</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Mehmonlar fikri</span>
+          <h2 class="section-title reveal">Ular <em>AZURA</em> haqida nima deydi</h2>
+        </div>
+
+        <div class="reviews-slider reveal">
+          <div class="reviews-track" id="reviewsTrack">
+            <article class="review-card glass">
+              <div class="review-stars">★★★★★</div>
+              <p>"Xonalar nihoyatda chiroyli va toza. SPA markazi alohida yoqdi — ta'tilimiz haqiqiy dam olish bo'ldi!"</p>
+              <div class="review-author">
+                <span class="avatar" style="--a:#4EA8FF">DA</span>
+                <div>
+                  <strong>Dilnoza A.</strong>
+                  <span>Toshkent</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card glass">
+              <div class="review-stars">★★★★★</div>
+              <p>"Rooftop bardagi manzara ajoyib. Xodimlar juda e'tiborli, har bir so'rovimiz tez bajarildi. Albatta qaytamiz!"</p>
+              <div class="review-author">
+                <span class="avatar" style="--a:#7DD3FC">SK</span>
+                <div>
+                  <strong>Sardor K.</strong>
+                  <span>Samarqand</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card glass">
+              <div class="review-stars">★★★★★</div>
+              <p>"Biznes uchrashuv uchun bordik, konferens-zal va xizmat darajasi kutganimizdan yuqori edi. Tavsiya qilaman."</p>
+              <div class="review-author">
+                <span class="avatar" style="--a:#38BDF8">MT</span>
+                <div>
+                  <strong>Malika T.</strong>
+                  <span>Buxoro</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card glass">
+              <div class="review-stars">★★★★★</div>
+              <p>"Presidential suite'da oilamiz bilan bo'ldik — bolalar uchun ham qulayliklar bor. Xotiralar bir umr qoladi."</p>
+              <div class="review-author">
+                <span class="avatar" style="--a:#0EA5E9">JN</span>
+                <div>
+                  <strong>Jasur N.</strong>
+                  <span>Farg'ona</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider-nav">
+            <button class="slider-btn glass" id="revPrev" aria-label="Oldingi">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <div class="slider-dots" id="revDots"></div>
+            <button class="slider-btn glass" id="revNext" aria-label="Keyingi">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA / CONTACT ============ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-panel glass reveal">
+          <div class="cta-info">
+            <span class="eyebrow">Bron qilish</span>
+            <h2 class="section-title">Damolingizni <em>bugun</em> rejalashtiring</h2>
+            <p>
+              Formani to'ldiring — menejerlarimiz 15 daqiqa ichida siz bilan bog'lanadi.
+              Yoki bizga to'g'ridan-to'g'ri qo'ng'iroq qiling.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+                <a href="tel:+998712000000">+998 (71) 200-00-00</a>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></span>
+                <a href="mailto:stay@azura.uz">stay@azura.uz</a>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+                <span>Amir Temur ko'chasi 108, Toshkent</span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="booking-form glass-inner" id="bookingForm" novalidate>
+            <div class="form-row">
+              <label class="field">
+                <span>Ismingiz</span>
+                <input type="text" name="name" placeholder="Ism familiya" required />
+              </label>
+              <label class="field">
+                <span>Telefon</span>
+                <input type="tel" name="phone" placeholder="+998 __ ___ __ __" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field">
+                <span>Kelish sanasi</span>
+                <input type="date" name="checkin" required />
+              </label>
+              <label class="field">
+                <span>Ketish sanasi</span>
+                <input type="date" name="checkout" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field">
+                <span>Xona turi</span>
+                <select name="room">
+                  <option>Deluxe King</option>
+                  <option>Azure Suite</option>
+                  <option>Presidential</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Mehmonlar soni</span>
+                <select name="guests">
+                  <option>1 kishi</option>
+                  <option selected>2 kishi</option>
+                  <option>3 kishi</option>
+                  <option>4+ kishi</option>
+                </select>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Bron qilish
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-note">Yuborish orqali siz <a href="#">maxfiylik siyosati</a>ga rozilik bildirasiz.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#lg)" />
+              <path d="M18 44 L32 18 L46 44 Z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" />
+              <circle cx="32" cy="38" r="3.5" fill="#fff" />
+            </svg>
+          </span>
+          <span class="logo-text">AZURA<em>Hotel &amp; Spa</em></span>
+        </a>
+        <p>Toshkentdagi premium mehmonxona. Tun va kun — AZURA doim siz bilan.</p>
+        <div class="socials">
+          <a href="#" class="glass" aria-label="Telegram"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M21.5 4.2 3.6 11c-1.2.5-1.2 1.7 0 2.1l4.4 1.4 1.7 5.2c.3.9 1.1 1 1.8.4l2.5-2.4 4.7 3.4c.8.6 1.7.2 1.9-.8l3.3-15.5c.2-1.1-.6-1.9-1.6-1.6zM8.7 13.9l9.3-5.8c.4-.2.8.1.5.4l-7.6 7-.3 3.2z"/></svg></a>
+          <a href="#" class="glass" aria-label="Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
+          <a href="#" class="glass" aria-label="Facebook"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M13.5 21v-7h2.6l.4-3h-3V9.1c0-.9.3-1.5 1.6-1.5h1.5V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.1H8v3h2.4v7z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sahifalar</h4>
+        <ul>
+          <li><a href="#about">Biz haqimizda</a></li>
+          <li><a href="#rooms">Xonalar</a></li>
+          <li><a href="#services">Xizmatlar</a></li>
+          <li><a href="#gallery">Galereya</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Xizmatlar</h4>
+        <ul>
+          <li><a href="#services">SPA &amp; Wellness</a></li>
+          <li><a href="#services">Restoran</a></li>
+          <li><a href="#services">Transfer</a></li>
+          <li><a href="#services">Biznes markaz</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ish vaqti</h4>
+        <ul class="hours">
+          <li><span>Resepsiya</span><strong>24 / 7</strong></li>
+          <li><span>Restoran</span><strong>07:00 — 23:00</strong></li>
+          <li><span>SPA</span><strong>09:00 — 22:00</strong></li>
+          <li><span>Basseyn</span><strong>07:00 — 21:00</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> AZURA Hotel &amp; Spa. Barcha huquqlar himoyalangan.</p>
+      <p class="made-with">Liquid glass dizaynda yaratilgan 💎</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox glass" id="lightbox" role="dialog" aria-modal="true" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Yopish">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Oldingi">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <figure>
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Keyingi">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast glass" id="toast" role="status">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/></svg>
+    <span>So'rovingiz yuborildi! Tez orada bog'lanamiz.</span>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
